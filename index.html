@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKR-International - Safe Your Business</title>
 
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #f8f9fa; color: #333; line-height: 1.6; }
+    html { scroll-behavior: smooth; }
+
+    header { background: #0a2540; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position:sticky; top:0; z-index:1000 }
+    header h1 { font-size: 22px; color: #00d4ff; }
+    nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap }
+    nav a { color: white; margin: 0 5px; text-decoration: none; font-weight: 500; }
+    nav a:hover { color: #00d4ff; }
+
+   .btn { background: #00d4ff; color: #0a2540; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }
+   .btn:hover { background: #00a3cc; }
+   .btn-green { background:#22c55e; color:white }
+   .btn-green:hover { background:#16a34a }
+
+   .hero { background: linear-gradient(135deg, #0a2540, #003366); color: white; text-align: center; padding: 80px 20px; }
+   .hero h2 { font-size: 32px; margin-bottom: 10px; }
+   .hero .promise { font-size: 18px; color: #00ff88; font-weight: bold; margin-bottom: 15px; }
+
+   .section { padding: 60px 20px; text-align: center; }
+   .section h3 { font-size: 28px; margin-bottom: 30px; color: #0a2540; }
+
+   .benefits { display: grid; grid-template-columns: 1fr; gap: 20px; max-width:1100px; margin:auto }
+   .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center }
+   .card h4 { color: #0a2540; margin-bottom: 10px; font-size:18px }
+
+   .slider{position:relative;height:450px;overflow:hidden;max-width:1100px;margin:0 auto;border-radius:12px}
+   .slide{position:absolute;width:100%;height:100%;display:none}
+   .slide img{width:100%;height:100%;object-fit:cover}
+   .slide.active{display:block}
+
+   .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1100px;margin:auto}
+   .team-card img{border-radius:50%;margin-bottom:10px; width:120px; height:120px; object-fit:cover}
+
+   .panel{padding:30px;max-width:500px;margin:40px auto;background:white;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.15)}
+   .panel h3{color:#0a2540;margin-bottom:15px;text-align:center}
+   .panel input{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc;font-size:15px}
+   .hidden{display:none}
+
+   .cta { background: #00d4ff; color: #0a2540; padding: 60px 20px; text-align: center; }
+   .cta h3{font-size:26px; margin-bottom:15px}
+   footer { background: #0a2540; color: white; text-align: center; padding: 25px; }
+
+    @media (min-width: 768px) {
+     .benefits { grid-template-columns: repeat(2, 1fr); }
+      header { padding: 15px 50px; }
+     .hero h2{font-size:42px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <img src="images/logo.png" alt="SKR Logo" style="width:50px; height:50px; border-radius:8px;">
+      <h1>SKR-International</h1>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#slider">Gallery</a>
+      <a href="#team">Team</a>
+      <a href="#benefits">Membership</a>
+      <a href="#contact">Contact</a>
+      <button id="loginNavBtn" class="btn" onclick="showPanel('loginPanel')">Login</button>
+      <button id="signupNavBtn" class="btn btn-green" onclick="showPanel('signupPanel')">Signup</button>
+      <button id="logoutBtn" class="btn hidden" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+    <section class="hero" id="home">
+    <h2>Safe Your Business with SKR-International</h2>
+    <div class="promise">Our Policies - Never You Face Any Loss</div>
+    <p style="font-size:18px; margin-bottom:25px">Business Improvement + Financial Help + Trusted Financers</p>
+    <a href="#contact" class="btn">Become a Member</a>
+  </section>
+
+  <section class="section" id="slider" style="background:#fff">
+    <h3>Our Gallery</h3>
+    <div class="slider">
+      <div class="slide active"><img src="images/slide1.jpg" alt="Slide 1"></div>
+      <div class="slide"><img src="images/slide2.jpg" alt="Slide 2"></div>
+      <div class="slide"><img src="images/slide3.jpg" alt="Slide 3"></div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <h3>Meet Our Team</h3>
+    <div class="team-grid">
+      <div class="card team-card"><img src="images/team1.jpg"><h4>Ahmed Khan</h4><p>CEO & Founder</p></div>
+      <div class="card team-card"><img src="images/team2.jpg"><h4>Sara Ahmed</h4><p>Operations Manager</p></div>
+      <div class="card team-card"><img src="images/team3.jpg"><h4>Ali Raza</h4><p>Customer Support</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="benefits" style="background:#fff">
+    <h3>Members Are Eligible For All These</h3>
+    <div class="benefits">
+      <div class="card"><h4>Business Improvement</h4><p>Multiple strategies to grow your company</p></div>
+      <div class="card"><h4>Financial Help</h4><p>Direct support for your business needs</p></div>
+      <div class="card"><h4>Verified Financers</h4><p>Access to our trusted financer network</p></div>
+      <div class="card"><h4>Loss Protection</h4><p>We support you. Never you face any loss</p></div>
+    </div>
+  </section>
+
+  <section id="panels">
+    <div id="loginPanel" class="panel hidden">
+      <h3>Member Login</h3>
+      <input id="loginEmail" type="email" placeholder="Enter Email">
+      <input id="loginPass" type="password" placeholder="Enter Password">
+      <button class="btn" style="width:100%" onclick="login()">Login</button>
+    </div>
+
+    <div id="signupPanel" class="panel hidden">
+      <h3>Create New Account</h3>
+      <input id="signupName" type="text" placeholder="Full Name">
+      <input id="signupEmail" type="email" placeholder="Enter Email">
+      <input id="signupPass" type="password" placeholder="Create Password">
+      <button class="btn btn-green" style="width:100%" onclick="signup()">Sign Up</button>
+    </div>
+
+    <div id="userPanel" class="panel hidden">
+      <h3>Welcome, <span id="userName"></span></h3>
+      <p style="font-size:18px; margin-bottom:20px"><b>Current Balance:</b> $<span id="balance">0</span></p>
+      <h4>Request Deposit</h4>
+      <input id="depositAmount" type="number" placeholder="Enter Deposit Amount">
+      <button class="btn" style="width:100%" onclick="requestDeposit()">Send Deposit Request</button>
+      <h4 style="margin-top:15px">Request Withdrawal</h4>
+      <input id="withdrawAmount" type="number" placeholder="Enter Withdraw Amount">
+      <button class="btn" style="width:100%" onclick="requestWithdraw()">Send Withdraw Request</button>
+    </div>
+
+    <div id="adminPanel" class="panel hidden">
+      <h3>Admin Dashboard</h3>
+      <p>Yahan sab pending Deposit/Withdrawal requests show hongi</p>
+      <div id="requests" style="margin-top:15px; text-align:left"></div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h3>Join 100s of Safe & Growing Companies</h3>
+    <button class="btn" style="background:#0a2540; color:#fff" onclick="contactWhatsApp()">Contact Us on WhatsApp</button>
+  </section>
+
+  <footer>
+    <p>© 2026 SKR-International. All Rights Reserved.</p>
+  </footer>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyARX24b0EnCmh-3WcYfy9wtgj5vpHUNEPQ",
+      authDomain: "sherry-project-1214.firebaseapp.com",
+      projectId: "sherry-project-1214",
+      storageBucket: "sherry-project-1214.firebasestorage.app",
+      messagingSenderId: "692003406873",
+      appId: "1:692003406873:web:e38c4b3806d963b5761688",
+      measurementId: "G-2RPT4PEXHX"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    window.showPanel = (id)=>{ document.querySelectorAll('.panel').forEach(p=>p.classList.add('hidden')); document.getElementById(id).classList.remove('hidden'); document.getElementById(id).scrollIntoView({behavior:'smooth'}) }
+
+    window.signup = async ()=>{
+      const name=document.getElementById('signupName').value;
+      const email=document.getElementById('signupEmail').value;
+      const pass=document.getElementById('signupPass').value;
+      const userCred=await createUserWithEmailAndPassword(auth,email,pass);
+      await setDoc(doc(db,"users",userCred.user.uid),{name,email,balance:0,role:"user",createdAt:serverTimestamp()});
+      alert("Account Created Successfully!")
+    }
+    window.login = async ()=>{ const email=document.getElementById('loginEmail').value; const pass=document.getElementById('loginPass').value; await signInWithEmailAndPassword(auth,email,pass) }
+    window.logout = ()=> signOut(auth)
+
+    onAuthStateChanged(auth,async(user)=>{
+      if(user){
+        document.getElementById('loginNavBtn').classList.add('hidden')
+        document.getElementById('signupNavBtn').classList.add('hidden')
+        document.getElementById('logoutBtn').classList.remove('hidden')
+        const snap=await getDoc(doc(db,"users",user.uid));
+        const data=snap.data();
+        document.getElementById('userName').innerText=data.name;
+        document.getElementById('balance').innerText=data.balance;
+        if(data.role=="admin"){showPanel('adminPanel')} else {showPanel('userPanel')}
+      } else {
+        document.getElementById('loginNavBtn').classList.remove('hidden')
+        document.getElementById('signupNavBtn').classList.remove('hidden')
+        document.getElementById('logoutBtn').classList.add('hidden')
+      }
+    })
+
+    window.requestDeposit = async ()=>{ const amount=document.getElementById('depositAmount').value; await addDoc(collection(db,"requests"),{type:"deposit",amount:Number(amount),uid:auth.currentUser.uid,status:"pending",time:serverTimestamp()}); alert("Deposit Request Sent") }
+    window.requestWithdraw = async ()=>{ const amount=document.getElementById('withdrawAmount').value; await addDoc(collection(db,"requests"),{type:"withdraw",amount:Number(amount),uid:auth.currentUser.uid,status:"pending",time:serverTimestamp()}); alert("Withdraw Request Sent") }
+    window.contactWhatsApp = ()=> window.open('https://wa.me/923001234567','_blank');
+
+    let i=0; setInterval(()=>{ const slides=document.querySelectorAll('.slide'); slides.forEach(s=>s.classList.remove('active')); slides[i].classList.add('active'); i=(i+1)%slides.length },4000)
+  </script>
+</body>
+</html>
